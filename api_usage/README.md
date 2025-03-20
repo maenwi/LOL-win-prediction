@@ -31,3 +31,4 @@ def _make_response(url):
     else:
         raise Exception(f"API request failed with status {response.status_code}")
 ```
+API 받아오는 더 많은 코드는, [LOL_data_pipeline.py](../modules/LOL_data_pipeline.py) 참고.
