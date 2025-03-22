@@ -27,7 +27,7 @@ class APIHander:
             raise Exception(f"API request failed with status {self.response.status_code}")
     
     def get_players_in_high_tier(self, queue, tier):
-        # https://kr.api.riotgames.com/lol/league/v4/challengerleagues/by-queue/RANKED_SOLO_5x5?api_key=RGAPI-d5ec0d44-3eaa-4c76-904e-6a13855e5fbc
+        # https://kr.api.riotgames.com/lol/league/v4/challengerleagues/by-queue/RANKED_SOLO_5x5?api_key={my_api_key}
         endpoint = f"league/v4/{tier}leagues/by-queue/{queue}"
         params = {
             "api_key" : self.api_key
@@ -35,7 +35,7 @@ class APIHander:
         return self._make_response(endpoint, params)
     
     def get_players_in_tier(self, queue, division, tier, page):
-        # https://kr.api.riotgames.com/lol/league/v4/entries/RANKED_SOLO_5x5/DIAMOND/I?page=100&api_key=RGAPI-0385985e-c9eb-4226-8712-8fc22d25b825
+        # https://kr.api.riotgames.com/lol/league/v4/entries/RANKED_SOLO_5x5/DIAMOND/I?page=100&api_key={my_api_key}
         endpoint = f"league/v4/entries/{queue}/{tier}/{division}"
         params = {
             "page" : page,
@@ -44,7 +44,7 @@ class APIHander:
         return self._make_response(endpoint, params)
     
     def get_player_information(self, summoner_id):
-        # https://kr.api.riotgames.com/lol/summoner/v4/summoners/7UTADmly1oxqAH65TaF8oKyq22oe24pNmekBeT4-9v2-_qDC?api_key=RGAPI-0385985e-c9eb-4226-8712-8fc22d25b825
+        # https://kr.api.riotgames.com/lol/summoner/v4/summoners/7UTADmly1oxqAH65TaF8oKyq22oe24pNmekBeT4-9v2-_qDC?api_key={my_api_key}
 
         endpoint = f"summoner/v4/summoners/{summoner_id}"
         params = {
@@ -55,10 +55,10 @@ class APIHander:
     
     def get_game_ids(self, puuid, queue, type, start = 0, count = 20):
         # https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/KO3vDELXr5SdXh0ivn47_NqK5T--BrLoe7ATOP_NZEYNz14C74fdt1h95uLoFKNzPXZrTlf1kG9-NA/ids
-        # ?queue=420&type=ranked&start=0&count=20&api_key=RGAPI-d5ec0d44-3eaa-4c76-904e-6a13855e5fbc
+        # ?queue=420&type=ranked&start=0&count=20&api_key={my_api_key}
 
         # https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/8d8ssHwVjjoqWIKEFhqwU6X1Th5DpAYL2clr7DF7Ftt5J6EbEGi04lI5r1gaDQkcGgjS4VJzjioF8w/ids
-        # ?queue=420&type=ranked&start=0&count=30&api_key=RGAPI-0385985e-c9eb-4226-8712-8fc22d25b825
+        # ?queue=420&type=ranked&start=0&count=30&api_key={my_api_key}
         base_url = "https://asia.api.riotgames.com/lol/"
         endpoint = f"match/v5/matches/by-puuid/{puuid}/ids"
         params = {
@@ -73,7 +73,7 @@ class APIHander:
     
     def get_game_timeline_information(self, game_id):
         # https://asia.api.riotgames.com/lol/match/v5/matches/KR_7328456203/timeline
-        # ?api_key=RGAPI-d5ec0d44-3eaa-4c76-904e-6a13855e5fbc
+        # ?api_key={my_api_key}
         base_url = "https://asia.api.riotgames.com/lol/"
         endpoint = f"match/v5/matches/{game_id}/timeline"
         params = {
@@ -84,7 +84,7 @@ class APIHander:
     
     def get_game_information(self, game_id):
         # https://asia.api.riotgames.com/lol/match/v5/matches/KR_7335746315
-        # ?api_key=RGAPI-295c181a-ae9b-4499-97fd-b86ed23ef858
+        # ?api_key={my_api_key}
         base_url = "https://asia.api.riotgames.com/lol/"
         endpoint = f"match/v5/matches/{game_id}"
         params = {
